@@ -46,4 +46,14 @@ dependencies {
     implementation 'com.stephentuso:welcome:1.4.1'
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
     implementation 'com.github.dmytrodanylyk:android-morphing-button:98a4986e56' // commit hash
+
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    //日志拦截器
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'
+    implementation 'io.reactivex:rxjava:1.2.4'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'org.ligboy.retrofit2:converter-fastjson-android:2.1.0'
+
 }

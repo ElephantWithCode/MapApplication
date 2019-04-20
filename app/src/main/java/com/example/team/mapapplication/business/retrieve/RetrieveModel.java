@@ -3,11 +3,20 @@ package com.example.team.mapapplication.business.retrieve;
 import com.example.team.mapapplication.base.BaseModel;
 import com.example.team.mapapplication.bean.DataDisplayInfo;
 import com.example.team.mapapplication.bean.InputValueInfo;
+import com.example.team.mapapplication.bean.WeatherBean;
+import com.example.team.mapapplication.beaninterface.IWeather;
 
 import org.litepal.LitePal;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Ellly on 2018/8/12.
@@ -22,6 +31,29 @@ public class RetrieveModel extends BaseModel {
      * @return data list
      */
     public List<DataDisplayInfo> getDisplayInfos() {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.thinkpage.cn")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(new OkHttpClient())
+                .build();
+
+        IWeather iWeather = retrofit.create(IWeather.class);
+
+        Call<WeatherBean> call = iWeather.weather("rot2enzrehaztkdk","beijing");
+        call.enqueue(new Callback<WeatherBean>() {
+            @Override
+            public void onResponse(Call<WeatherBean> call, Response<WeatherBean> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<WeatherBean> call, Throwable t) {
+
+            }
+        });
+
+
 
         displayInfos = LitePal.findAll(DataDisplayInfo.class);
 

@@ -23,9 +23,12 @@ import com.example.team.mapapplication.base.IBaseMethodInterface;
 import com.example.team.mapapplication.bean.InputValueInfo;
 import com.example.team.mapapplication.business.acquireinfo.AcquireModel;
 import com.example.team.mapapplication.business.background_functions.signal.SaveDataService;
+import com.example.team.mapapplication.business.show_image.ShowImageActivity;
 import com.example.team.mapapplication.engine.RepeatHandler;
 import com.example.team.mapapplication.engine.LocateFinishHandler;
 import com.example.team.mapapplication.engine.ScreenShotHelper;
+import com.example.team.mapapplication.engine.ScreenShotListener;
+import com.qmuiteam.qmui.widget.popup.QMUIPopup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -403,6 +406,14 @@ public class MainPresenter extends BasePresenter<IMainView> {
             public void run() {
                 ScreenShotHelper shotHelper = new ScreenShotHelper().setDefaultListener();
 //                shotHelper.shotScreen((Activity) mContext);  // have not ensured type-cast safety yet... wyy
+                shotHelper.setListener(new ScreenShotListener(){
+
+                    @Override
+                    public void afterScreenShot(Bitmap bitmap) {
+                        Intent intent = new Intent(mContext, ShowImageActivity.class);
+                        mContext.startActivity(intent);
+                    }
+                });
                 shotHelper.shotScreen(map);
                 animateFloatingViews();
                 // but it should work I bet.

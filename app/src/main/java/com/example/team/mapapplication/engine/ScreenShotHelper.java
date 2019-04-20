@@ -17,23 +17,21 @@ import java.io.FileOutputStream;
  */
 
 public class ScreenShotHelper {
-    public abstract class ScreenShotListener{
-        abstract void afterScreenShot(Bitmap bitmap);
-        void beforeScreenShot(){
-
-        }
-    }
 
     public ScreenShotHelper(){}
 
     public ScreenShotHelper setDefaultListener(){
         mListener = new ScreenShotListener() {
             @Override
-            void afterScreenShot(Bitmap bitmap) {
+            public void afterScreenShot(Bitmap bitmap) {
                 saveScreenShot(bitmap);
             }
         };
         return this;
+    }
+
+    public void setListener(ScreenShotListener l){
+        mListener = l;
     }
 
     private ScreenShotListener mListener;

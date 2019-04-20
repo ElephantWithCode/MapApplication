@@ -1,5 +1,7 @@
 package com.example.team.mapapplication.business.retrieve;
 
+import android.os.Handler;
+
 import com.example.team.mapapplication.base.BasePresenter;
 
 /**
@@ -24,10 +26,37 @@ public class RetrievePresenter extends BasePresenter<IRetrieveView> {
         mViewModel.getDisplayInfos().addAll(mModel.getDisplayInfos());
     }
 
-    public void deleteThisTable(String fileName) {
-        mModel.deleteThisDataList(fileName);
-        mModel.deleteThisDisplayInfo(fileName);
-        requireData();
-        mView.notifyDataSetChanged();
+    /**
+     * Asynchronous way of loading data. wyy
+     */
+    public void showTable(){
+        mView.showLoading();
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                requireData();
+                mView.notifyDataSetChanged();
+                mView.hideLoading();
+            }
+        });
+    }
+
+    /**
+     *
+     * @param fileName table name
+     */
+
+    public void deleteThisTable(final String fileName) {
+        mView.showLoading();
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                mModel.deleteThisDataList(fileName);
+                mModel.deleteThisDisplayInfo(fileName);
+                requireData();
+                mView.notifyDataSetChanged();
+            }
+        });
+
     }
 }

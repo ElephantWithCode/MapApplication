@@ -8,8 +8,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.blankj.utilcode.util.SizeUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.dinuscxj.itemdecoration.GridOffsetsItemDecoration;
 import com.example.team.mapapplication.R;
 import com.example.team.mapapplication.base.BaseActivity;
@@ -66,11 +68,12 @@ public class RetrieveActivity extends BaseActivity<RetrievePresenter> implements
 
         mPresenter.attach(this);
 
-        mPresenter.requireData();
-
         initViews();
 
         initRv();
+
+//        mPresenter.requireData();
+        mPresenter.showTable();
     }
 
     private void initRv() {
@@ -165,5 +168,15 @@ public class RetrieveActivity extends BaseActivity<RetrievePresenter> implements
     @Override
     public void notifyDataSetChanged() {
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showLoading() {
+        ToastUtils.showLong("Loading Starts");
+    }
+
+    @Override
+    public void hideLoading() {
+        ToastUtils.showLong("Loading Ends");
     }
 }
