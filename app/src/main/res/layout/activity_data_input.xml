@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".business.datainput.DataInputActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:background="@color/sky_blue"
+        app:titleTextColor="@color/qmui_config_color_white"
+        android:elevation="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+    </android.support.v7.widget.Toolbar>
+
+    <com.bin.david.form.core.SmartTable
+        android:id="@+id/datainput_st"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="0dp">
+
+    </com.bin.david.form.core.SmartTable>
+
+</RelativeLayout>

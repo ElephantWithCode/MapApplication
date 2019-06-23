@@ -18,6 +18,10 @@
             android:id="@+id/menu_item_body_info"
             android:icon="@drawable/ic_body_info_menu"
             android:title="填写信息" />
+        <item
+            app:showAsAction="never"
+            android:id="@+id/menu_item_data_input"
+            android:title="表格输入" />
 
 
 </menu>

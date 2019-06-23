@@ -317,6 +317,9 @@ public class MainPresenter extends BasePresenter<IMainView> {
         setForceOverride(false); // reset the override mode to true for next ask of override behavior. wyy
         mModel.saveValuesToDB(text);
         mModel.saveDisplayToDB(text);
+
+        //TODO: 这里写上传数据的网络部分代码；还有用户已保存文件的文件描述数据。
+
         ToastUtils.showShort("存储完成");
         return 0;
     }

@@ -32,29 +32,6 @@ public class RetrieveModel extends BaseModel {
      */
     public List<DataDisplayInfo> getDisplayInfos() {
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.thinkpage.cn")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(new OkHttpClient())
-                .build();
-
-        IWeather iWeather = retrofit.create(IWeather.class);
-
-        Call<WeatherBean> call = iWeather.weather("rot2enzrehaztkdk","beijing");
-        call.enqueue(new Callback<WeatherBean>() {
-            @Override
-            public void onResponse(Call<WeatherBean> call, Response<WeatherBean> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<WeatherBean> call, Throwable t) {
-
-            }
-        });
-
-
-
         displayInfos = LitePal.findAll(DataDisplayInfo.class);
 
         return displayInfos;

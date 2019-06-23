@@ -821,6 +821,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+            case R.id.menu_item_data_input:
+                startActivity(new Intent()); //TODO: 跳转至表格输入
+                break;
             case R.id.menu_item_screen_shot:
                 mPresenter.shotScreen(mMapView.getMap());
                 break;
