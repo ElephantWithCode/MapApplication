@@ -14,13 +14,18 @@
         android:layout_height="?attr/actionBarSize">
     </android.support.v7.widget.Toolbar>
 
-    <com.bin.david.form.core.SmartTable
-        android:id="@+id/datainput_st"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/datainput_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
         android:layout_marginTop="0dp">
 
-    </com.bin.david.form.core.SmartTable>
-
+    </android.support.v7.widget.RecyclerView>
+    <Button
+        android:id="@+id/datainput_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        />
 </RelativeLayout>

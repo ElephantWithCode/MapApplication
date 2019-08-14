@@ -76,6 +76,7 @@ public class RetrievePresenter extends BasePresenter<IRetrieveView> {
 
                     @Override
                     public void onNext(WeatherBean weatherBean) {
+//                        这里更新数据
 //                        mViewModel.getDisplayInfos().addAll(weatherBean);
                     }
                 });
