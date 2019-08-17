@@ -2,6 +2,7 @@ package com.example.team.mapapplication.business.main;
 
 import android.view.View;
 
+import com.baidu.mapapi.map.WeightedLatLng;
 import com.baidu.mapapi.model.LatLng;
 import com.example.team.mapapplication.base.IBaseMethodInterface;
 import com.example.team.mapapplication.base.IBaseView;
@@ -60,4 +61,6 @@ public interface IMainView extends IBaseView, IBaseViewModel{
     void morphBtnToStartedState();
 
     void morphBtnToNotStartedState();
+
+    void drawHeatMapWeighted(List<WeightedLatLng> dataList);
 }

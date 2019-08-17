@@ -1,5 +1,7 @@
 package com.example.team.mapapplication.business.login;
 
+import android.content.Intent;
+
 import com.example.team.mapapplication.base.BasePresenter;
 import com.example.team.mapapplication.bean.UserBean;
 
@@ -21,7 +23,7 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
         switch (verifiedState){
             case LoginConstants.VERIFIED_OK:
                 mModel.saveUserInfo(mContext);
-                mView.transferToMainView();
+                mView.transferToMainView(mModel.getTargetActivityClass());
                 break;
             case LoginConstants.VERIFIED_USER_NOT_FOUND:
                 mView.warningUserNotFound();
@@ -31,5 +33,13 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
                 break;
         }
 
+    }
+
+    public void processIntent(Intent intent){
+        String className = intent.getStringExtra("class");
+//        if (className.isEmpty()){     Empty Class Name Exception will be handled in the LoginModel.getTargetActivityClass method;
+//            throw new Exception("Intent Name Must Be Set");
+//        }
+        mModel.setTargetClassName(className);
     }
 }

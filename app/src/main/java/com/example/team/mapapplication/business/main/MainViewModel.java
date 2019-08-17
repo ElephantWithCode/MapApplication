@@ -2,6 +2,7 @@ package com.example.team.mapapplication.business.main;
 
 import android.util.Log;
 
+import com.baidu.mapapi.map.WeightedLatLng;
 import com.baidu.mapapi.model.LatLng;
 import com.blankj.utilcode.constant.PermissionConstants;
 import com.blankj.utilcode.util.SPUtils;
@@ -78,6 +79,17 @@ public class MainViewModel extends BaseModel {
 
     public void setDataWaiting(boolean isDataWaiting) {
         this.isDataWaiting = isDataWaiting;
+    }
+
+
+
+    public List<WeightedLatLng> getHeatMapDataWeighted(){
+        List<InputValueInfo> infos = getInputValueInfos();
+        List<WeightedLatLng> wData = new ArrayList<>();
+        for (InputValueInfo i : infos){
+            wData.add(new WeightedLatLng(i.getLatLng(), i.getValue()));
+        }
+        return wData;
     }
 
     /**

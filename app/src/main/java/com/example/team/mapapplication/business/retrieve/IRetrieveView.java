@@ -10,4 +10,9 @@ import com.example.team.mapapplication.base.LoadingDemonstrater;
 
 public interface IRetrieveView extends IBaseView, IBaseViewModel, LoadingDemonstrater {
     void notifyDataSetChanged();
+
+    void warnRetrieveError();
+
+    void transferToLogin();
 }
+

@@ -4,6 +4,7 @@ import rx.Observable;
 import android.os.Handler;
 
 import com.example.team.mapapplication.base.BasePresenter;
+import com.example.team.mapapplication.bean.UserBean;
 import com.example.team.mapapplication.bean.WeatherBean;
 import com.example.team.mapapplication.beaninterface.IWeather;
 import com.example.team.mapapplication.engine.RetrofitFactory;
@@ -71,7 +72,9 @@ public class RetrievePresenter extends BasePresenter<IRetrieveView> {
 
                     @Override
                     public void onError(Throwable e) {
-                        requireData();
+//                        requireData();
+                        mView.warnRetrieveError();
+                        showTable();
                     }
 
                     @Override
@@ -108,5 +111,13 @@ public class RetrievePresenter extends BasePresenter<IRetrieveView> {
             }
         });
 
+    }
+
+    public void uploadData(){
+        if (UserBean.isLogined()){
+//TODO:upload this data            mModel.getDisplayInfos();
+        }else {
+            mView.transferToLogin();
+        }
     }
 }

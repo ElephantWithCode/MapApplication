@@ -5,4 +5,5 @@ public final class LoginConstants {
     public static final int VERIFIED_USER_NOT_FOUND = -1;
     public static final int VERIFIED_PASSWORD_WRONG = -2;
 
+    public static final String[] ACTIVITY_CLASS_NAMES = {"MainActivity", "RetrieveActivity"};
 }

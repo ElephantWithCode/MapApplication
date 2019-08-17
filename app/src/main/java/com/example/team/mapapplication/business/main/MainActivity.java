@@ -45,6 +45,7 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.map.WeightedLatLng;
 import com.baidu.mapapi.model.LatLng;
 import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.TimeUtils;
@@ -97,6 +98,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
         mBaiduMap.setMyLocationData(data);
         Log.d("MyLocData", data.latitude + " \n" + data.longitude);
     }
+
+
 
     @Override
     public void drawHeatMap(List<LatLng> dataList) {
@@ -338,6 +341,24 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
                 .color(R.color.colorPrimary)
                 .text("点击开始");
         mStartEndBtn.morph(square);
+    }
+
+    @Override
+    public void drawHeatMapWeighted(List<WeightedLatLng> dataList) {
+        //设置渐变颜色值
+        int[] DEFAULT_GRADIENT_COLORS = {Color.rgb(0, 225,  50), Color.rgb(255, 0, 0) };
+        //设置渐变颜色起始值
+        float[] DEFAULT_GRADIENT_START_POINTS = { 0.1f, 1f };
+        //构造颜色渐变对象
+        Gradient gradient = new Gradient(DEFAULT_GRADIENT_COLORS, DEFAULT_GRADIENT_START_POINTS);
+
+        mHeatMap = new HeatMap.Builder()
+                .weightedData(dataList)
+                .gradient(gradient)
+                .build();
+        mBaiduMap.addHeatMap(mHeatMap);
+
+        mDrawerLayout.closeDrawer(Gravity.LEFT);
     }
 
     @Override

@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.WeightedLatLng;
 import com.baidu.mapapi.model.LatLng;
 import com.blankj.utilcode.constant.PermissionConstants;
 import com.blankj.utilcode.util.PermissionUtils;
@@ -82,8 +83,11 @@ public class MainPresenter extends BasePresenter<IMainView> {
             public void run() {
 
                 try {
-                    List<LatLng> dataList = mModel.getHeatMapData();
-                    mView.drawHeatMap(dataList);
+//                    List<LatLng> dataList = mModel.getHeatMapData();
+//                    mView.drawHeatMap(dataList);
+                    // Modified to adapt to weighted data
+                    List<WeightedLatLng> dataList = mModel.getHeatMapDataWeighted();
+                    mView.drawHeatMapWeighted(dataList);
                 } catch (NoSuchElementException e){
                     ToastUtils.showShort("请保存至少一组数据");
                     return;

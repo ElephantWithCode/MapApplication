@@ -1,6 +1,7 @@
 package com.example.team.mapapplication.business.login;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
         super.onCreate(savedInstanceState);
         mPresenter.attach(this);
 
+        mPresenter.processIntent(getIntent());
+
         initView();
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
@@ -57,8 +60,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     }
 
     @Override
-    public void transferToMainView() {
-
+    public void transferToMainView(Class c) {
+        startActivity(new Intent(this, c));
     }
 
     @Override

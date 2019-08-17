@@ -10,6 +10,10 @@ public class UserBean {
         return user;
     }
 
+    public static Boolean isLogined(){
+        return false;
+    }
+
     public String getPassword() {
         return mPassword;
     }

@@ -17,6 +17,8 @@ import com.example.team.mapapplication.R;
 import com.example.team.mapapplication.base.BaseActivity;
 import com.example.team.mapapplication.base.BaseModel;
 import com.example.team.mapapplication.bean.DataDisplayInfo;
+import com.example.team.mapapplication.business.login.LoginActivity;
+import com.example.team.mapapplication.business.login.LoginConstants;
 import com.example.team.mapapplication.business.main.MainActivity;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
@@ -168,6 +170,19 @@ public class RetrieveActivity extends BaseActivity<RetrievePresenter> implements
     @Override
     public void notifyDataSetChanged() {
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void warnRetrieveError() {
+
+    }
+
+    @Override
+    public void transferToLogin() {
+        //TODO: warning first
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.putExtra("class", LoginConstants.ACTIVITY_CLASS_NAMES[1]);
+        startActivity(intent);
     }
 
     @Override
