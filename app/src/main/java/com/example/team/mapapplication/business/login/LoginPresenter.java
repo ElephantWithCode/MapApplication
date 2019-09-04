@@ -1,6 +1,7 @@
 package com.example.team.mapapplication.business.login;
 
 import android.content.Intent;
+import android.os.Handler;
 
 import com.example.team.mapapplication.base.BasePresenter;
 import com.example.team.mapapplication.bean.UserBean;
@@ -15,11 +16,24 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
             return true;
         }
     }
-    public void login(UserBean user){
+
+    public void login(final UserBean user){
+        Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                mView.showLoading();
+                loginLogic(user);
+            }
+        });
+    }
+
+    private void loginLogic(UserBean user){
         if (!judgeUserFormat(user)) {
             return;
         }
         int verifiedState = mModel.verifyUser(user);
+        mView.hideLoading();
         switch (verifiedState){
             case LoginConstants.VERIFIED_OK:
                 mModel.saveUserInfo(mContext);

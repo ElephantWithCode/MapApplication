@@ -12,6 +12,8 @@ public class DataDisplayInfo extends LitePalSupport{
     private String mFileName;
     private Calendar mCalendar;
 
+    private int mFileType; //0 for map data; 1 for input data.
+
     private int year;
     private int month;
     private int day;
@@ -19,6 +21,14 @@ public class DataDisplayInfo extends LitePalSupport{
     public DataDisplayInfo(){
         mFileName = "test_name";
         mCalendar = Calendar.getInstance();
+    }
+
+    public int getFileType(){
+        return mFileType;
+    }
+
+    public void setFileType(int type){
+        mFileType = type;
     }
 
     public String getFileName() {

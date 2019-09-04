@@ -3,6 +3,8 @@ package com.example.team.mapapplication.bean;
 public class UserBean {
     private String mUserName;
     private String mPassword;
+    private String IsOk;
+
     public static UserBean constructFromNameAndPassword(String mUserName, String mPassword){
         UserBean user = new UserBean();
         user.setUserName(mUserName);
@@ -28,5 +30,13 @@ public class UserBean {
 
     public void setUserName(String userName) {
         this.mUserName = userName;
+    }
+
+    public String getIsOk() {
+        return IsOk;
+    }
+
+    public void setIsOk(String isOk) {
+        IsOk = isOk;
     }
 }

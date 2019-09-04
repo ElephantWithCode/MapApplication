@@ -85,10 +85,11 @@ public class RetrieveActivity extends BaseActivity<RetrievePresenter> implements
             public void onBind(SuperViewHolder holder, int viewType, int layoutPosition, DataDisplayInfo item) {
                 TextView name = holder.findViewById(R.id.retrieve_rv_item_tv_name);
                 TextView time = holder.findViewById(R.id.retrieve_rv_item_tv_time);
+                TextView type = holder.findViewById(R.id.retrieve_rv_item_tv_type);
 
                 name.setText(item.getFileName());
 
-                time.setText(item.getYear() + " - " + item.getMonth() + " - " + item.getDay());
+                time.setText(item.getYear() + " - " + item.getMonth() + " - " + item.getDay() + " - " + item.getFileType());
             }
         };
 
@@ -104,6 +105,7 @@ public class RetrieveActivity extends BaseActivity<RetrievePresenter> implements
                 }).addAction("确定", new QMUIDialogAction.ActionListener() {
                     @Override
                     public void onClick(QMUIDialog dialog, int index) {
+
                         Intent toShowIntent = new Intent(getContext(), MainActivity.class);
                         toShowIntent.putExtra("display_only", true);
                         toShowIntent.putExtra("file_name", mModel.getDisplayInfos().get(position).getFileName());
@@ -120,6 +122,7 @@ public class RetrieveActivity extends BaseActivity<RetrievePresenter> implements
         mAdapter.setOnItemLongClickListener(new OnItemLongClickListener() {
             @Override
             public void onItemLongClick(View itemView, int viewType, final int position) {
+
                 QMUIDialog.MessageDialogBuilder builder = new QMUIDialog.MessageDialogBuilder(getContext());
                 builder.setMessage("确定要删除吗")
                         .addAction("取消", new QMUIDialogAction.ActionListener() {

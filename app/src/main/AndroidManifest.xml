@@ -31,19 +31,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".business.forgetpassword.PasswordActivity"></activity>
-        <activity android:name=".business.login.LoginActivity" />
+        <activity
+            android:name=".test.register_with_fragment_remain_imcomplete_due_to_previous_architecture.TestActivity"
+            android:label="@string/title_activity_test">
+        </activity>
+        <activity android:name=".business.forgetpassword.PasswordActivity" />
+        <activity android:name=".business.login.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".business.draw.DrawActivity"
             android:label="@string/title_activity_draw" />
         <activity
             android:name=".business.datainput.DataInputActivity"
             android:label="@string/title_activity_data_input">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".test.register_with_fragment_remain_imcomplete_due_to_previous_architecture.RegisterActivity" />
 

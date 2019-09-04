@@ -1,9 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".business.login.LoginActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:background="@color/sky_blue"
+        app:titleTextColor="@color/qmui_config_color_white"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="5dp">
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/act_login_rv_name"
+        android:layout_marginTop="70dp"
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/act_login_tv_name"
+            android:text="用户名"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            android:textSize="20sp"
+            android:textColor="@color/sky_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/act_login_et_name"
+            android:layout_toRightOf="@id/act_login_tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textColor="@color/qmui_config_color_pure_black"
+            android:hint="请输入用户名"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/act_login_rv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:id="@+id/act_login_tv_password"
+            android:text=" 密  码 "
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            android:textSize="20sp"
+            android:textColor="@color/sky_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/act_login_et_password"
+            android:layout_toRightOf="@id/act_login_tv_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textColor="@color/qmui_config_color_pure_black"
+            android:hint="请输入密码"
+            />
+    </RelativeLayout>
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/act_login_btn_lg"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        app:qmui_radius="3dp"
+        android:textColor="@color/sky_blue"
+        app:qmui_borderColor="@color/sky_blue"
+        app:qmui_backgroundColor="@color/qmui_config_color_white"
+        android:elevation="5dp"
+        android:textSize="25sp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="登录"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

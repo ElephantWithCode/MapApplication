@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.example.team.mapapplication.R;
 import com.example.team.mapapplication.base.BaseActivity;
 import com.example.team.mapapplication.bean.UserBean;
+import com.example.team.mapapplication.engine.QMUITextDialogGenerater;
+import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 
 public class LoginActivity extends BaseActivity<LoginPresenter> implements ILoginView{
 
@@ -46,12 +48,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
             }
         });
 
-
-
     }
 
     private void initView() {
-
+        mLoginBtn = findViewById(R.id.act_login_btn_lg);
+        mUserNameEdit = findViewById(R.id.act_login_et_name);
+        mPasswordEdit = findViewById(R.id.act_login_et_password);
     }
 
     @Override
@@ -66,16 +68,43 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
 
     @Override
     public void warningUserNotFound() {
-
+        QMUIDialog dialog = new QMUITextDialogGenerater(this, "未找到该用户").getDialog();
+        dialog.show();
     }
 
     @Override
     public void warningPasswordWrong() {
-
+        new QMUITextDialogGenerater(this, "用户密码错误").getDialog().show();
     }
 
     @Override
     public void warningInputIncomplete() {
+        new QMUITextDialogGenerater(this, "请全部输入").getDialog().show();
+    }
 
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    protected CharSequence getToolbarTitle() {
+        return "登录";
+    }
+
+    @Override
+    protected void onHomeIndicatorClicked() {
+        super.onHomeIndicatorClicked();
+        finish();
+    }
+
+    @Override
+    protected int getDrawerIcon() {
+        return R.drawable.qmui_icon_topbar_back;
     }
 }

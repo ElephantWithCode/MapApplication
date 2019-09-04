@@ -20,7 +20,9 @@ import com.example.team.mapapplication.R;
 import com.example.team.mapapplication.base.BaseActivity;
 import com.example.team.mapapplication.base.BaseModel;
 import com.example.team.mapapplication.business.draw.DrawActivity;
+import com.example.team.mapapplication.engine.QMUIEditTextDialogGenerator;
 import com.example.team.mapapplication.test.register_with_fragment_remain_imcomplete_due_to_previous_architecture.TableTestBean;
+import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 
 import org.byteam.superadapter.SuperAdapter;
 import org.byteam.superadapter.SuperViewHolder;
@@ -75,8 +77,8 @@ public class DataInputActivity extends BaseActivity<DataInputPresenter> implemen
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mLayoutManager.setSpanCount(mLayoutManager.getSpanCount() + 1);
-                mPresenter.finishDataInput();
+//                mLayoutManager.setSpanCount(mLayoutManager.getSpanCount() + 1);
+                askFileName();
             }
         });
     }
@@ -132,7 +134,29 @@ public class DataInputActivity extends BaseActivity<DataInputPresenter> implemen
     }
 
     @Override
+    public void askFileName() {
+        QMUIDialog dialog = new QMUIEditTextDialogGenerator(this, "请输入文件名"){
+            @Override
+            protected void onPositiveClick(QMUIDialog dialog, int index, String text) {
+                dialog.dismiss();
+                mPresenter.finishDataInput(text);
+            }
+        }.getDialog();
+        dialog.show();
+    }
+
+    @Override
     public void moveToDrawView() {
         startActivity(new Intent(this, DrawActivity.class));
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
     }
 }
